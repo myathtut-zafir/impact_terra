@@ -33,10 +33,10 @@ class ProductPriceApiController extends Controller
             ->paginate(20);
 
         if ($request->language === "mm") {
-            return response()->json(new ProductPriceMyanmarCollection($this->cacheCompose($request, $requestedDate, $productPrice)));
+            return response()->json(new ProductPriceMyanmarCollection($this->cacheCompose($request->language, $requestedDate, $productPrice)));
         }
 
-        return response()->json(new ProductPriceCollection($this->cacheCompose($request, $requestedDate, $productPrice)));
+        return response()->json(new ProductPriceCollection($this->cacheCompose($request->language, $requestedDate, $productPrice)));
     }
 
     /**
@@ -72,14 +72,14 @@ class ProductPriceApiController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param $language
      * @param $requestedDate
      * @param $productPrice
      * @return mixed
      */
-    private function cacheCompose(Request $request, $requestedDate, $productPrice)
+    private function cacheCompose($language, $requestedDate, $productPrice)
     {
-        $cacheKey = $requestedDate . '-' . $request->language ?? "en";
+        $cacheKey = $requestedDate . '-' . $language ?? "en";
         if (Cache::has($cacheKey)) {
             Log::info('cache', ['here' => $cacheKey]);
             return Cache::get($cacheKey);
