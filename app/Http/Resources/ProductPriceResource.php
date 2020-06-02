@@ -18,9 +18,19 @@ class ProductPriceResource extends JsonResource
         return [
             'id' => $this->id,
             'date_price' => $this->date_price ?? "",
-            'price' => "20000",
-            'market_name' => $this->market->market_name ?? "",
-            'product_name' => $this->product->product_name ?? "",
+            'price' => $this->price ?? "",
+            'market_name' => $this->composeMarketName($request['language']),
+            'product_name' => $this->composeProductName($request['language']),
         ];
+    }
+
+    function composeMarketName($language)
+    {
+        return $language === "mm" ? $this->market->market_name_mm : $this->market->market_name ?? "";
+    }
+
+    function composeProductName($language)
+    {
+        return $language === "mm" ? $this->product->product_name_mm ?? "" : $this->product->product_name ?? "";
     }
 }

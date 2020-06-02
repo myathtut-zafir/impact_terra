@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\APIResponser;
 use App\Http\Resources\ProductPriceCollection;
-use App\Http\Resources\ProductPriceMyanmarCollection;
 use App\Models\ProductPrice;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -19,7 +18,7 @@ class ProductPriceApiController extends Controller
     /**
      * @SWG\Get(
      *   path="/api/market-price?date=2020-05-31?language=mm",
-     *   summary="market prices with date",
+     *   summary="market prices with date and language",
      *   @SWG\Response(response=200, description="successful operation"),
      * )
      * @param Request $request
@@ -28,15 +27,12 @@ class ProductPriceApiController extends Controller
     function index(Request $request)
     {
         $requestedDate = $request->date ?? Carbon::today('Asia/Rangoon')->toDateString();
+
         $productPrice = ProductPrice::with(['market', 'product'])
             ->where('date_price', $requestedDate)
             ->paginate(20);
 
-        if ($request->language === "mm") {
-            return response()->json(new ProductPriceMyanmarCollection($this->cacheCompose($request->language, $requestedDate, $productPrice)));
-        }
-
-        return response()->json(new ProductPriceCollection($this->cacheCompose($request->language, $requestedDate, $productPrice)));
+        return response()->json(new ProductPriceCollection($this->cacheCompose($requestedDate, $productPrice)));
     }
 
     /**
@@ -58,34 +54,34 @@ class ProductPriceApiController extends Controller
     {
         $data = $request->all();
 
-        if ($data['market_id'] != null || $data['product_id'] != null) {
+        if ($data['market_id'] == null || $data['product_id'] == null) {
             return $this->exceptionResponse('product_id or market_id should not be null ', 400);
         }
+        $date = isset($data['date']) && $data['date'] != null ? $data['date'] : Carbon::today('Asia/Rangoon')->toDateString();
 
         $productPrice = new ProductPrice();
-        $productPrice->date_price = isset($data['date']) && $data['date'] != null ? $data['date'] : Carbon::today('Asia/Rangoon')->toDateString();
+        $productPrice->date_price = $date;
         $productPrice->market_id = $data['market_id'];
         $productPrice->product_id = $data['product_id'];
+        $productPrice->price = $data['price'];
         $productPrice->save();
 
-        return $this->respondSuccessMsgOnly('success Product');
+        Cache::forget($date);
+
+        return $this->respondSuccessMsgOnly('success store Product');
     }
 
     /**
-     * @param $language
      * @param $requestedDate
      * @param $productPrice
      * @return mixed
      */
-    private function cacheCompose($language, $requestedDate, $productPrice)
+    private function cacheCompose($requestedDate, $productPrice)
     {
-        $cacheKey = $requestedDate . '-' . $language ?? "en";
-        if (Cache::has($cacheKey)) {
-            Log::info('cache', ['here' => $cacheKey]);
-            return Cache::get($cacheKey);
+        if (Cache::has($requestedDate)) {
+            return Cache::get($requestedDate);
         } else {
-            Log::info('cache', ['nope' => $cacheKey]);
-            Cache::put($cacheKey, $productPrice, 20);
+            Cache::put($requestedDate, $productPrice, 20);
             return $productPrice;
         }
     }
