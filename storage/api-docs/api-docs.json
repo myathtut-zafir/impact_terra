@@ -1,0 +1,50 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Impact Terra API",
+        "description": "L5 Swagger API description",
+        "contact": {
+            "email": "aa.htut@gmail.com.com"
+        },
+        "version": "1.0.0"
+    },
+    "host": "localhost:8000",
+    "basePath": "",
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "paths": {
+        "/api/market-price?date=2020-05-31": {
+            "get": {
+                "summary": "market prices with date",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/market-price": {
+            "post": {
+                "summary": "Insert market price",
+                "parameters": [
+                    {
+                        "name": "market-prices",
+                        "in": "path",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "fail"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {}
+}

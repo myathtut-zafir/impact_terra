@@ -1,0 +1,26 @@
+@font-face {
+    font-family: Pyidaungsu;
+    font-style: normal;
+    src: url(../../fonts/Pyidaungsu-2.5.2_Regular.ttf) format('truetype')
+}
+
+@font-face {
+    font-family: Zawgyi-One;
+    font-style: normal;
+    src: url(../../fonts/ZawgyiOneRegular.ttf) format('truetype')
+}
+.text-burmese-unicode {
+    font-family: 'Varela Round', 'Pyidaungsu', sans-serif !important;
+}
+/*div#kt_wrapper {*/
+    /*padding-top: 80px!important;*/
+/*}*/
+
+/*.chart-js{*/
+    /*padding: 2em 0;*/
+/*}*/
+
+/*#align-right {*/
+    /*width: 100%!important;*/
+    /*background-color: black;*/
+/*}*/

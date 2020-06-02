@@ -1,0 +1,25 @@
+.btn-wrap-text {
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline-block;
+    text-overflow: ellipsis;
+}
+
+.w-30 {
+    width: 30% !important;
+}
+
+.btn-group-item {
+    height:2.5rem;
+    width: 110px;
+}
+
+.typing-logo {
+    background: url(../img/ic_typing_round.svg) no-repeat center center;
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    background-size: 24px;
+    vertical-align: bottom;
+    margin-right: 12px;
+}

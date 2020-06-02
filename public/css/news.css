@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'Pyidaungsu';
+    font-style: normal;
+    src: url('../fonts/Pyidaungsu-2.5.2_Regular.ttf') format('truetype');
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Varela Round', 'Pyidaungsu', sans-serif;
+    color: #402810;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: left;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}

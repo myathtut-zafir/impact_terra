@@ -1,0 +1,90 @@
+.text-xs-custom {
+    font-size: 0.2rem;
+
+}
+
+.text-color-mute-custom {
+    color: #4D4F5C;
+}
+
+.text-primary-custom {
+    color: #4D4F5C;
+}
+
+.text-count-custom {
+    font-size: 3.2rem;
+}
+
+.white-text {
+    color: white;
+}
+
+.white-text-secondary {
+    color: floralwhite;
+}
+
+.card-bg-custom {
+    background-color: #5076DC;
+}
+
+#box1 {
+    padding: 2px;
+}
+
+#box1 {
+    background: #5076DC;
+    color: white;
+    font-size: 0.6rem;
+    border-radius: 25px;
+}
+
+.price-card {
+    background-color: #5076DC;
+}
+
+.white-text-scondary {
+    color: #9EC4FD;
+}
+
+.jumbo-text {
+    font-size: 5rem
+}
+
+.my-flex-container {
+    border: 2px solid #5279D9;
+    max-height: 400px;
+    margin-bottom: 20px;
+}
+
+.opcity50 {
+    opacity: 0.5%;
+}
+
+.btn-primary-background {
+    background: white;
+}
+
+.text-primary {
+    color: #2e59d9;
+}
+
+.badget {
+    background: #5076DC;
+    color: white;
+    font-size: 0.6rem;
+    border-radius: 25px;
+}
+
+.program {
+    background: #5076DC;
+    color: white;
+    font-size: 1rem;
+    border-radius: 25px;
+    margin: 2px;
+    padding: 9px;
+}
+
+.table-width {
+    width: 45%
+}
+
