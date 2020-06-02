@@ -9,6 +9,7 @@ use App\Http\Resources\ProductPriceMyanmarCollection;
 use App\Models\ProductPrice;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 
 class ProductPriceApiController extends Controller
@@ -26,15 +27,16 @@ class ProductPriceApiController extends Controller
      */
     function index(Request $request)
     {
+        $requestedDate = $request->date ?? Carbon::today('Asia/Rangoon')->toDateString();
         $productPrice = ProductPrice::with(['market', 'product'])
-            ->where('date_price', $request->date ?? Carbon::today('Asia/Rangoon')->toDateString())
-            ->paginate(10);
+            ->where('date_price', $requestedDate)
+            ->paginate(20);
 
         if ($request->language === "mm") {
-            return response()->json(new ProductPriceMyanmarCollection($productPrice));
+            return response()->json(new ProductPriceMyanmarCollection($this->cacheCompose($request, $requestedDate, $productPrice)));
         }
 
-        return response()->json(new ProductPriceCollection($productPrice));
+        return response()->json(new ProductPriceCollection($this->cacheCompose($request, $requestedDate, $productPrice)));
     }
 
     /**
@@ -67,5 +69,24 @@ class ProductPriceApiController extends Controller
         $productPrice->save();
 
         return $this->respondSuccessMsgOnly('success Product');
+    }
+
+    /**
+     * @param Request $request
+     * @param $requestedDate
+     * @param $productPrice
+     * @return mixed
+     */
+    private function cacheCompose(Request $request, $requestedDate, $productPrice)
+    {
+        $cacheKey = $requestedDate . '-' . $request->language ?? "en";
+        if (Cache::has($cacheKey)) {
+            Log::info('cache', ['here' => $cacheKey]);
+            return Cache::get($cacheKey);
+        } else {
+            Log::info('cache', ['nope' => $cacheKey]);
+            Cache::put($cacheKey, $productPrice, 20);
+            return $productPrice;
+        }
     }
 }
