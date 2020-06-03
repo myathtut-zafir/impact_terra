@@ -14,7 +14,7 @@ class ProductPriceController extends Controller
 {
     function index()
     {
-        $productPrices = ProductPrice::paginate(3);
+        $productPrices = ProductPrice::paginate(5);
 
         return view('admin.product-price.index', compact('productPrices'));
     }
@@ -35,6 +35,7 @@ class ProductPriceController extends Controller
         $productPrice->date_price = isset($data['date']) && $data['date'] != null ? $data['date'] : Carbon::today('Asia/Rangoon')->toDateString();
         $productPrice->market_id = $data['market_name'];
         $productPrice->product_id = $data['product_name'];
+        $productPrice->price = $data['price'];
 
         $productPrice->save();
 

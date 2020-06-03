@@ -26,6 +26,7 @@ class ProductPriceRequest extends FormRequest
         return [
             'product_name' => 'required',
             'market_name' => 'required',
+            'price' => 'required',
         ];
     }
 }

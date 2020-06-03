@@ -13,14 +13,14 @@
 
 
 Route::get('/', function () {
-    return redirect('/admin/product-price');
+    return redirect('/admin/market-price');
 });
 
 Route::middleware(['checkAuth'])->group(function () {
     Route::prefix('admin')->group(function () {
-        Route::get('/product-price', 'Admin\ProductPriceController@index')->name('product-price.index');
-        Route::get('/product-price/create', 'Admin\ProductPriceController@create')->name('product-price.create');
-        Route::post('/product-price/create', 'Admin\ProductPriceController@store')->name('product-price.insert');
+        Route::get('/market-price', 'Admin\ProductPriceController@index')->name('market-price.index');
+        Route::get('/market-price/create', 'Admin\ProductPriceController@create')->name('market-price.create');
+        Route::post('/market-price/create', 'Admin\ProductPriceController@store')->name('market-price.insert');
     });
 });
 

@@ -15,9 +15,9 @@
         "https"
     ],
     "paths": {
-        "/api/market-price?date=2020-05-31": {
+        "/api/market-price?date=2020-05-31?language=mm": {
             "get": {
-                "summary": "market prices with date",
+                "summary": "market prices with date and language",
                 "responses": {
                     "200": {
                         "description": "successful operation"

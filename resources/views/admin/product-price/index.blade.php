@@ -19,7 +19,7 @@
         </div>
     </div>
     <div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content" style="background-color: #EDEEF4">
-        <a href="{{ route("product-price.create") }}" class="btn btn-primary btn-text-color fix-btn">Add New</a>
+        <a href="{{ route("market-price.create") }}" class="btn btn-primary btn-text-color fix-btn">Add New</a>
         <div class="row">
             <div class="col-xl-12 col-lg-12">
                 <div class="card shadow mb-4">

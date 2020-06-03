@@ -17,8 +17,8 @@
         <div id="kt_aside_menu" class="kt-aside-menu  kt-aside-menu--dropdown " data-ktmenu-vertical="1"
              data-ktmenu-dropdown="1" data-ktmenu-scroll="0">
             <ul class="kt-menu__nav ">
-                <li class="kt-menu__item  {{{ (activeFullUrl(route("product-price.index")) ? 'kt-menu__item--active' : '') }}}"
-                    aria-haspopup="true"><a href="{{ route("product-price.index") }}" class="kt-menu__link "><i
+                <li class="kt-menu__item  {{{ (activeFullUrl(route("market-price.index")) ? 'kt-menu__item--active' : '') }}}"
+                    aria-haspopup="true"><a href="{{ route("market-price.index") }}" class="kt-menu__link "><i
                                 class="kt-menu__link-icon flaticon2-dashboard"></i><span class="kt-menu__link-text"> Product</span></a>
                 </li>
             </ul>

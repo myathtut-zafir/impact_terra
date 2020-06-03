@@ -5,8 +5,8 @@
     <div class="kt-header-menu-wrapper" id="kt_header_menu_wrapper">
         <div id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout-tab ">
             <ul class="kt-menu__nav ">
-                <li class="kt-menu__item {{{ (activeFullUrl(route("product-price.index")) ? 'kt-menu__item--active' : '') }}} "
-                    aria-haspopup="true"><a href="{{ route("product-price.index") }}" class="kt-menu__link "><span
+                <li class="kt-menu__item {{{ (activeFullUrl(route("market-price.index")) ? 'kt-menu__item--active' : '') }}} "
+                    aria-haspopup="true"><a href="{{ route("market-price.index") }}" class="kt-menu__link "><span
                                 class="kt-menu__link-text">Product</span></a></li>
             </ul>
         </div>

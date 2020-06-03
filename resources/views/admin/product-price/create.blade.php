@@ -15,7 +15,7 @@
         <div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content" style="background-color: white">
             <div class="row">
                 <div class="col-md-6 offset-md-1">
-                    <form action="{{ route('product-price.insert') }}" method="post" class="kt-form">
+                    <form action="{{ route('market-price.insert') }}" method="post" class="kt-form">
                         @csrf
                         <div class="form-group">
                             <label for="market_name"> Select Market <span style="color: red">*</span></label>
@@ -47,6 +47,7 @@
                         @if ($errors->has('product_name'))
                             <span class="text-danger">{{ $errors->first('product_name') }}</span>
                         @endif
+
                         <div class="form-group">
                             <label for="date">Date</label>
                             <input type="date" class="form-control" id="date"
@@ -54,6 +55,15 @@
                         </div>
                         @if ($errors->has('date'))
                             <span class="text-danger">{{ $errors->first('date') }}</span>
+                        @endif
+
+                        <div class="form-group">
+                            <label for="price">Price <span style="color: red">*</span></label>
+                            <input type="text" class="form-control" id="price"
+                                   aria-describedby="emailHelp" name="price">
+                        </div>
+                        @if ($errors->has('price'))
+                            <span class="text-danger">{{ $errors->first('price') }}</span>
                         @endif
 
                         <button class="btn btn-primary">Save</button>
