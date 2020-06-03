@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,10 +18,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['middleware' => 'jwt-auth'], function () {
-
-
+    Route::post('/market-price/create', 'Api\ProductPriceApiController@store');
+    Route::get('/market-price', 'Api\ProductPriceApiController@index');
 });
-Route::post('/market-price/create', 'Api\ProductPriceApiController@store');
-Route::get('/market-price', 'Api\ProductPriceApiController@index');
+
 Route::post('/login', 'Api\AuthController@login');
 
