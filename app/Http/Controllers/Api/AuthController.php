@@ -23,7 +23,28 @@ class AuthController extends Controller
             'model' => Customer::class,
         ]]);
     }
-
+    /**
+     * @SWG\Post(
+     *   path="/api/login",
+     *   summary="login endpoint",
+     *   @SWG\Response(response=200, description="successful operation"),
+     *   @SWG\Response(response=400, description="fail"),
+     *     @SWG\Parameter(
+     *          name="phone_number",
+     *          description="phone number",
+     *          in="formData",
+     *          type="string"
+     *      ),
+     *       @SWG\Parameter(
+     *          name="password",
+     *          description="password",
+     *          in="formData",
+     *          type="string"
+     *      ),
+     * )
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     function login(Request $request)
     {
         $customer = Customer::where('phone_number', $request['phone_number'])->first();

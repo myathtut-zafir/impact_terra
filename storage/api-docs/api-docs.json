@@ -15,6 +15,33 @@
         "https"
     ],
     "paths": {
+        "/api/login": {
+            "post": {
+                "summary": "login endpoint",
+                "parameters": [
+                    {
+                        "name": "phone_number",
+                        "in": "formData",
+                        "description": "phone number",
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "formData",
+                        "description": "password",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "fail"
+                    }
+                }
+            }
+        },
         "/api/market-price?date=2020-05-31?language=mm": {
             "get": {
                 "summary": "market prices with date and language",
