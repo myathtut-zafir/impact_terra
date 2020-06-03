@@ -30,8 +30,36 @@
                 "summary": "Insert market price",
                 "parameters": [
                     {
-                        "name": "market-prices",
-                        "in": "path",
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization - JWT",
+                        "type": "string"
+                    },
+                    {
+                        "name": "date",
+                        "in": "formData",
+                        "description": "insert date",
+                        "type": "string"
+                    },
+                    {
+                        "name": "market_id",
+                        "in": "formData",
+                        "description": "insert market_id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "product_id",
+                        "in": "formData",
+                        "description": "insert product_id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "price",
+                        "in": "formData",
+                        "description": "insert price",
+                        "required": true,
                         "type": "string"
                     }
                 ],

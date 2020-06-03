@@ -42,8 +42,36 @@ class ProductPriceApiController extends Controller
      *   @SWG\Response(response=200, description="successful operation"),
      *   @SWG\Response(response=400, description="fail"),
      *		@SWG\Parameter(
-     *          name="market-prices",
-     *          in="path",
+     *          name="Authorization",
+     *          description="Authorization - JWT",
+     *          in="header",
+     *          type="string"
+     *      ),
+     *     @SWG\Parameter(
+     *          name="date",
+     *          description="insert date",
+     *          in="formData",
+     *          type="string"
+     *      ),
+     *     @SWG\Parameter(
+     *          name="market_id",
+     *          description="insert market_id",
+     *          required=true,
+     *          in="formData",
+     *          type="integer"
+     *      ),
+     *     @SWG\Parameter(
+     *          name="product_id",
+     *          description="insert product_id",
+     *          required=true,
+     *          in="formData",
+     *          type="integer"
+     *      ),
+     *     @SWG\Parameter(
+     *          name="price",
+     *          description="insert price",
+     *          required=true,
+     *          in="formData",
      *          type="string"
      *      ),
      * )
