@@ -21,7 +21,7 @@
     },
     "dependencies": {
         "botman-tinker": "^0.0.1",
-        "chart.js": "^2.8.0",
+        "chart.js": "^2.9.4",
         "laravel-vue-pagination": "^2.3.0",
         "myanmar-phonenumber": "^0.3.1",
         "vue-axios": "^2.1.4",
